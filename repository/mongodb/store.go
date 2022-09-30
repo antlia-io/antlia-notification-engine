@@ -39,7 +39,7 @@ func NewStore(db *mongo.Database) *Store {
 }
 
 func initDb() error {
-	cfg := config.LoadConfiguration("config/config.go")
+	cfg := config.LoadConfiguration("./config.json")
 	ctx := context.Background()
 	clint := options.Client().ApplyURI(cfg.MongoURL)
 

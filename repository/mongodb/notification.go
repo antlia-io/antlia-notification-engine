@@ -5,10 +5,10 @@ import (
 	"log"
 	"time"
 
-	"github.com/antlia-io/antlia-notification-engine/models"
+	"github.com/ethereum/go-ethereum/core/types"
 )
 
-func (s *Store) AddNotification(swap *models.Notification) error {
+func (s *Store) AddNotification(swap types.Log) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 	_, err := s.db.Collection("Notification").InsertOne(ctx, swap)

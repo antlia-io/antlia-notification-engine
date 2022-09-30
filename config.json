@@ -1,7 +1,5 @@
 {
 	"networkWebSocket": "wss://goerli.infura.io/ws/v3/65b8077906d64ae78cf9eda630f40613",
 	"contractAddress": "0x07865c6E87B9F70255377e024ace6630C1Eaa37F",
-	"mongo": {
-		"url": "mongodb://root:example@localhost:27017/admin"
-	  }
+	"url": "mongodb://root:example@localhost:27017/admin"
 }

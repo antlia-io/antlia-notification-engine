@@ -6,6 +6,7 @@ import (
 	"log"
 
 	"github.com/antlia-io/antlia-notification-engine/config"
+	"github.com/antlia-io/antlia-notification-engine/repository/mongodb"
 
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/common"
@@ -32,13 +33,17 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
+	db := mongodb.SharedStore()
 	for {
 		select {
 		case err := <-sub.Err():
 			log.Fatal(err)
 		case vLog := <-logs:
 			fmt.Println(vLog.TxHash, vLog.Data) // pointer to event log
+			err := db.AddNotification(vLog)
+			if err != nil {
+				fmt.Println(err.Error())
+			}
 		}
 	}
 }
