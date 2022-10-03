@@ -9,6 +9,7 @@ import (
 type Config struct {
 	NetworkWebSocket string `json:"networkWebSocket"`
 	ContractAddress  string `json:"contractAddress"`
+	MongoURL         string `json:"url"`
 }
 
 func LoadConfiguration(file string) Config {
